@@ -15,6 +15,7 @@ test*
 *.log
 target/npmlist.json
 package-lock.json
+jarvis.json
 resources/extras/thumbnail.jpg
 LICENSE
 
