@@ -4,3 +4,16 @@ telethon
 telethon-patch
 python-decouple
 python-dotenv
+aiohttp
+bs4
+gitpython
+htmlwebshot
+numpy>=1.21.2
+opencv-python-headless
+pillow
+psutil
+pytz
+requests
+telegraph
+youtube-search-python
+yt-dlp
