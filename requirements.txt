@@ -1,6 +1,6 @@
 # Important Requirements here.
 
-telethon
+telethon==1.36.0
 telethon-patch
 python-decouple
 python-dotenv
