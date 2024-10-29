@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Jarvis - UserBot
+
+echo "
+
+      Visit @MyJarvis for updates!!
+
+"
+
+python3 -m pyJarvis
