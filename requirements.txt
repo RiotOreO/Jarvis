@@ -8,9 +8,7 @@ aiohttp
 bs4
 gitpython
 htmlwebshot
-numpy>=1.21.2
-opencv-python-headless
-pillow
+pillow==9.5.0
 psutil
 pytz
 requests
