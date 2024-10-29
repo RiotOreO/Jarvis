@@ -62,7 +62,7 @@ async def inline_alive(o):
     )
     RES = [
         await o.builder.article(
-            type="photo",
+            # type="photo",
             text=MSG,
             include_media=True,
             buttons=SUP_BUTTONS,
