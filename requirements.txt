@@ -1,12 +1,4 @@
 # Important Requirements here.
 
-telethon
-telethon-patch
-python-decouple
-python-dotenv
-aiohttp
-gitpython
 htmlwebshot
 pytz
-requests
-telegraph

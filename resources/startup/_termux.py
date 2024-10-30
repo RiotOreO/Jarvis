@@ -14,12 +14,14 @@ def clear():
 
 
 MANDATORY_REQS = [
-    "https://github.com/New-dev0/Telethon/archive/Cartoon.zip",
+    "telethon",
+    "telethon-patch",
     "gitpython",
     "enhancer",
     "telegraph",
     "requests",
     "python-decouple",
+    "python-dotenv",
     "aiohttp",
 ]
 
@@ -31,7 +33,6 @@ OPT_PACKAGES = {
     "psutil": "Used for .usage command.",
     "lottie": "Used for animated sticker related conversion.",
     "apscheduler": "Used in autopic/nightmode (scheduling tasks.)",
-    # "git+https://github.com/google_trans_new.git": "Used for translation purposes.",
 }
 
 APT_PACKAGES = ["ffmpeg", "neofetch", "mediainfo"]
