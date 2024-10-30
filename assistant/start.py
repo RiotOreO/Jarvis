@@ -60,7 +60,7 @@ _start = [
 @callback("ownerinfo")
 async def own(event):
     msg = Owner_info_msg.format(
-        mention=event.sender.mention, me=inline_mention(jarvis_bot.me)
+        mention = inline_mention(event.sender), me=inline_mention(jarvis_bot.me)
     )
     if custom_info:
         msg += "\n\n• Powered by **@MyJarvis**"
