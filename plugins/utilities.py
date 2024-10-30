@@ -341,6 +341,7 @@ async def _(event):
 <b>••Nᴏ. Oғ PғPs</b> : <code>{}</code>
 <b>••Is Rᴇsᴛʀɪᴄᴛᴇᴅ</b>: <code>{}</code>
 <b>••Vᴇʀɪғɪᴇᴅ</b>: <code>{}</code>
+<b>••Is Pʀᴇᴍɪᴜᴍ</b>: <code>{}</code>
 <b>••Is A Bᴏᴛ</b>: <code>{}</code>
 <b>••Gʀᴏᴜᴘs Iɴ Cᴏᴍᴍᴏɴ</b>: <code>{}</code>
 """.format(
@@ -353,7 +354,7 @@ async def _(event):
         user_photos,
         user.restricted,
         user.verified,
-        #user.premium,
+        user.premium,
         user.bot,
         common_chats,
     )

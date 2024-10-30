@@ -1,17 +1,12 @@
 # Important Requirements here.
 
-telethon==1.36.0
+telethon
 telethon-patch
 python-decouple
 python-dotenv
 aiohttp
-bs4
 gitpython
 htmlwebshot
-pillow==9.5.0
-psutil
 pytz
 requests
 telegraph
-youtube-search-python
-yt-dlp
