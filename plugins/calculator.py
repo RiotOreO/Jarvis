@@ -6,7 +6,7 @@ __doc__ = get_help("help_calculator")
 
 import re
 
-from . import Button, asst, callback, get_string, in_pattern, udB, ultroid_cmd
+from . import Button, asst, callback, get_string, in_pattern, udB, jarvis_cmd
 
 CALC = {}
 
@@ -32,12 +32,12 @@ m = [
     ".",
     "÷",
 ]
-tultd = [Button.inline(f"{x}", data=f"calc{x}") for x in m]
-lst = list(zip(tultd[::4], tultd[1::4], tultd[2::4], tultd[3::4]))
+tjard = [Button.inline(f"{x}", data=f"calc{x}") for x in m]
+lst = list(zip(tjard[::4], tjard[1::4], tjard[2::4], tjard[3::4]))
 lst.append([Button.inline("=", data="calc=")])
 
 
-@ultroid_cmd(pattern="calc")
+@jarvis_cmd(pattern="calc")
 async def icalc(e):
     udB.del_key("calc")
     if e.client._bot:
@@ -141,7 +141,7 @@ async def _(e):
         ".",
         "÷",
     ]
-    tultd = [Button.inline(f"{x}", data=f"calc{x}") for x in m]
-    lst = list(zip(tultd[::4], tultd[1::4], tultd[2::4], tultd[3::4]))
+    tjard = [Button.inline(f"{x}", data=f"calc{x}") for x in m]
+    lst = list(zip(tjard[::4], tjard[1::4], tjard[2::4], tjard[3::4]))
     lst.append([Button.inline("=", data="calc=")])
     await e.edit(get_string("calc_1"), buttons=lst)
