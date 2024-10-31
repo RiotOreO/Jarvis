@@ -23,7 +23,7 @@ except ImportError:
 from telegraph import upload_file as uf
 
 from . import (
-    ULTConfig,
+    JARConfig,
     bash,
     con,
     downloader,
@@ -93,7 +93,7 @@ async def imak(event):
         f"`{xxx.name}`",
         file=xxx,
         force_document=True,
-        thumb=ULTConfig.thumb,
+        thumb=JARConfig.thumb,
     )
     os.remove(inp)
     await xx.delete()
@@ -152,7 +152,7 @@ async def _(event):
     with open(input_str, "w") as b:
         b.write(str(a.message))
     await xx.edit(f"**Packing into** `{input_str}`")
-    await event.reply(file=input_str, thumb=ULTConfig.thumb)
+    await event.reply(file=input_str, thumb=JARConfig.thumb)
     await xx.delete()
     os.remove(input_str)
 
