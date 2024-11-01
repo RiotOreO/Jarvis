@@ -340,7 +340,7 @@ async def customize():
             sir = f"@{jarvis_bot.me.username}"
         file = random.choice(
             [
-                "resources/extras/jarvis_assistant.jpg",
+                "resources/extras/jarvisAssistant.jpg",
                 "resources/extras/jarvis.jpg",
             ]
         )

@@ -451,7 +451,7 @@ async def jatiny(event):
         return
     xx = await event.eor(get_string("com_1"))
     ik = await reply.download_media()
-    im1 = Image.open("resources/extras/jarvis_blank.png")
+    im1 = Image.open("resources/extras/jarvisBlank.png")
     if ik.endswith(".tgs"):
         await con.animated_sticker(ik, "json.json")
         with open("json.json") as json:
