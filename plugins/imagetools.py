@@ -1,4 +1,5 @@
 # Jarvis - Userbot
+d(pattern="(grey|blur|negative|danger|mirror|quad|sketch|flip|toon)$")
 
 """
 ✘ Commands Available -
@@ -8,35 +9,8 @@
     Ex - `{i}border 12,22,23`
        - `{i}border 12,22,23 ; width (in number)`
 
-• `{i}grey <reply to any media>`
-    To make it black nd white.
-
 • `{i}color <reply to any Black nd White media>`
     To make it Colorfull.
-
-• `{i}toon <reply to any media>`
-    To make it toon.
-
-• `{i}danger <reply to any media>`
-    To make it look Danger.
-
-• `{i}negative <reply to any media>`
-    To make negative image.
-
-• `{i}blur <reply to any media>`
-    To make it blurry.
-
-• `{i}quad <reply to any media>`
-    create a Vortex.
-
-• `{i}mirror <reply to any media>`
-    To create mirror pic.
-
-• `{i}flip <reply to any media>`
-    To make it flip.
-
-• `{i}sketch <reply to any media>`
-    To draw its sketch.
 
 • `{i}blue <reply to any media>`
     just cool.
@@ -60,8 +34,6 @@ try:
     import cv2
 except ImportError:
     LOGS.error(f"{__file__}: OpenCv not Installed.")
-
-import numpy as np
 
 try:
     from PIL import Image
@@ -122,77 +94,6 @@ async def _(event):
     r_json = r.json()["output_url"]
     await event.client.send_file(event.chat_id, r_json, reply_to=reply)
     await xx.delete()
-
-
-@jarvis_cmd(pattern="(grey|blur|negative|danger|mirror|quad|sketch|flip|toon)$")
-async def jar_tools(event):
-    match = event.pattern_match.group(1)
-    ureply = await event.get_reply_message()
-    if not (ureply and (ureply.media)):
-        await event.eor(get_string("cvt_3"))
-        return
-    jarr = await ureply.download_media()
-    xx = await event.eor(get_string("com_1"))
-    if jarr.endswith(".tgs"):
-        xx = await xx.edit(get_string("sts_9"))
-    file = await con.convert(jarr, convert_to="png", outname="jar")
-    jar = cv2.imread(file)
-    if match == "grey":
-        jarvis = cv2.cvtColor(jar, cv2.COLOR_BGR2GRAY)
-    elif match == "blur":
-        jarvis = cv2.GaussianBlur(jar, (35, 35), 0)
-    elif match == "negative":
-        jarvis = cv2.bitwise_not(jar)
-    elif match == "danger":
-        dan = cv2.cvtColor(jar, cv2.COLOR_BGR2RGB)
-        jarvis = cv2.cvtColor(dan, cv2.COLOR_HSV2BGR)
-    elif match == "mirror":
-        ish = cv2.flip(jar, 1)
-        jarvis = cv2.hconcat([jar, ish])
-    elif match == "flip":
-        trn = cv2.flip(jar, 1)
-        ish = cv2.rotate(trn, cv2.ROTATE_180)
-        jarvis = cv2.vconcat([jar, ish])
-    elif match == "quad":
-        jar = cv2.imread(file)
-        roid = cv2.flip(jar, 1)
-        mici = cv2.hconcat([jar, roid])
-        fr = cv2.flip(mici, 1)
-        trn = cv2.rotate(fr, cv2.ROTATE_180)
-        jarvis = cv2.vconcat([mici, trn])
-    elif match == "sketch":
-        gray_image = cv2.cvtColor(jar, cv2.COLOR_BGR2GRAY)
-        inverted_gray_image = 255 - gray_image
-        blurred_img = cv2.GaussianBlur(inverted_gray_image, (21, 21), 0)
-        inverted_blurred_img = 255 - blurred_img
-        jarvis = cv2.divide(gray_image, inverted_blurred_img, scale=256.0)
-    elif match == "toon":
-        height, width, _ = jar.shape
-        samples = np.zeros([height * width, 3], dtype=np.float32)
-        count = 0
-        for x in range(height):
-            for y in range(width):
-                samples[count] = jar[x][y]
-                count += 1
-        _, labels, centers = cv2.kmeans(
-            samples,
-            12,
-            None,
-            (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10000, 0.0001),
-            5,
-            cv2.KMEANS_PP_CENTERS,
-        )
-        centers = np.uint8(centers)
-        ish = centers[labels.flatten()]
-        jarvis = ish.reshape(jar.shape)
-    cv2.imwrite("jar.jpg", jarvis)
-    await ureply.reply(
-        file="jar.jpg",
-        force_document=False,
-    )
-    await xx.delete()
-    os.remove("jar.jpg")
-    os.remove(file)
 
 
 @jarvis_cmd(pattern="csample (.*)")
