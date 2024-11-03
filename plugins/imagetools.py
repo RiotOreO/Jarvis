@@ -1,5 +1,4 @@
 # Jarvis - Userbot
-d(pattern="(grey|blur|negative|danger|mirror|quad|sketch|flip|toon)$")
 
 """
 ✘ Commands Available -
