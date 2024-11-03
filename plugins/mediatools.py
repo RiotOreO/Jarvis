@@ -5,10 +5,6 @@
 
 • `{i}mediainfo <reply to media>/<file path>/<url>`
    To get info about it.
-
-• `{i}rotate <degree/angle> <reply to media>`
-   Rotate any video/photo/media..
-   Note : for video it should be angle of 90's
 """
 
 import os
@@ -28,13 +24,6 @@ from . import (
     mediainfo,
     jarvis_cmd,
 )
-
-try:
-    import cv2
-except ImportError:
-    LOGS.info("WARNING: 'cv2' not found!")
-    cv2 = None
-
 
 @jarvis_cmd(pattern="mediainfo( (.*)|$)")
 async def mi(e):
@@ -104,40 +93,3 @@ async def mi(e):
     await e.eor(f"{extra}[{get_string('mdi_1')}]({urll})", link_preview=False)
     if not match:
         os.remove(naam)
-
-
-@jarvis_cmd(pattern="rotate( (.*)|$)")
-async def rotate_(jar):
-    match = jar.pattern_match.group(1).strip()
-    if not jar.is_reply:
-        return await jar.eor("`Reply to a media...`")
-    if match:
-        try:
-            match = int(match)
-        except ValueError:
-            match = None
-    if not match:
-        return await jar.eor("`Please provide a valid angle to rotate media..`")
-    reply = await jar.get_reply_message()
-    msg = await jar.eor(get_string("com_1"))
-    photo = reply.game.photo if reply.game else None
-    if reply.video:
-        media = await reply.download_media()
-        file = f"{media}.mp4"
-        await bash(
-            f'ffmpeg -i "{media}" -c copy -metadata:s:v:0 rotate={match} "{file}" -y'
-        )
-    elif photo or reply.photo or reply.sticker:
-        media = await jar.client.download_media(photo or reply)
-        img = cv2.imread(media)
-        new_ = rotate_image(img, match)
-        file = "jar.png"
-        cv2.imwrite(file, new_)
-    else:
-        return await msg.edit("`Unsupported Media..\nReply to Photo/Video`")
-    if os.path.exists(file):
-        await jar.client.send_file(
-            jar.chat_id, file=file, video_note=bool(reply.video_note), reply_to=reply.id
-        )
-    os.remove(media)
-    await msg.try_delete()

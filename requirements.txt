@@ -2,3 +2,5 @@
 
 htmlwebshot
 pytz
+emoji
+speedtest-cli
