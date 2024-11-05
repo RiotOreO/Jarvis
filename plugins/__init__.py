@@ -58,6 +58,7 @@ STUFF = {}
 
 NOSPAM_CHAT = [
     -1002482565837,  # JarvisSupportChat
+    -1002482565837,  # JarvisSupportChat
     -1001109500936,  # TelethonChat
     -1001050982793,  # Python
     -1001256902287,  # DurovsChat
