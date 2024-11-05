@@ -17,3 +17,5 @@ requests
 telegraph
 youtube-search-python
 yt-dlp
+emoji
+speedtest-cli
