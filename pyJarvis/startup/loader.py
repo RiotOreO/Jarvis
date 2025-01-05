@@ -85,7 +85,7 @@ def load_other_plugins(addons=None, pmbot=None, manager=None, vcbot=None):
             #        "rm -rf /usr/local/lib/python3.*/site-packages/pip/_vendor/.wh*"
             #    )
             subprocess.run(
-                f"{sys.executable} -m pip install --no-cache-dir -q -r ./addons/addons.txt",
+                f"{sys.executable} -m pip install --no-cache-dir -r ./addons/addons.txt",
                 shell=True,
             )
 
